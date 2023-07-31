@@ -4,11 +4,11 @@ FROM python:3.8-slim-buster
 
 WORKDIR /app
 
-COPY requirenments.txt requirenments.txt
+COPY requirements.txt requirements.txt
 
 RUN apt update && apt install -y build-essential && apt install default-libmysqlclient-dev -y
 
-RUN pip3 install -r requirenments.txt
+RUN pip3 install -r requirements.txt
 
 COPY . .
 

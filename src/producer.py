@@ -2,7 +2,8 @@
 import pika
 
 def produce_event():
-    connection_params = pika.ConnectionParameters('localhost')
+    connection_params = pika.ConnectionParameters(host='172.17.0.3',port=5672)
+    # connection_params = pika.ConnectionParameters(host='127.0.0.1',port=5672)
     connection = pika.BlockingConnection(connection_params)
     channel = connection.channel()
 

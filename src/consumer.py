@@ -1,7 +1,7 @@
 import pika
 def on_message_received(ch, method, properties,body):
     print(f"received new message : {body}")
-connection_params = pika.ConnectionParameters('localhost')
+connection_params = pika.ConnectionParameters(host='172.17.0.3',port=5672)
 connection = pika.BlockingConnection(connection_params)
 channel = connection.channel()
 channel.queue_declare(queue='letterbox')
