@@ -1,0 +1,3 @@
+USER_SERVICE="userSrv"
+DEVICE_SERVICE="deviceSrv"
+LICENSE_SERVICE="licenseSrv"
