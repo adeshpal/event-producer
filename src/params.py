@@ -1,3 +1,5 @@
+"""Parameters/Const used in service
+"""
 
 #Services
 USER_SERVICE="userSrv"

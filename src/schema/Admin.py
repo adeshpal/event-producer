@@ -3,6 +3,7 @@ from src import conn
 from datetime import datetime
 
 class Admin(sqlobject.SQLObject):
+    """Admin info table"""
     _connection = conn
     name = sqlobject.StringCol()
     role = sqlobject.IntCol(default=0)
@@ -11,6 +12,7 @@ class Admin(sqlobject.SQLObject):
     created_on = sqlobject.DateTimeCol(default=datetime.now(), sqlType='DATETIME')
 
     def get_dict(self):
+        """resp dict"""
         return {
             "id": self.id,
             "name": self.name,
@@ -19,3 +21,4 @@ class Admin(sqlobject.SQLObject):
             "password": self.password,
             "created_on": self.created_on,
         }
+Admin.createTable(ifNotExists=True)

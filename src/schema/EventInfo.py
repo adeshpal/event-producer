@@ -3,6 +3,7 @@ from src import conn
 from datetime import datetime
 
 class EventInfo(sqlobject.SQLObject):
+    """Event info table"""
     _connection = conn
     user_id = sqlobject.IntCol(default=0)
     event_type = sqlobject.IntCol(default=0)  
@@ -11,9 +12,8 @@ class EventInfo(sqlobject.SQLObject):
     event_details = sqlobject.JSONCol(default = {})
     created_on = sqlobject.DateTimeCol(default=datetime.now(), sqlType='DATETIME')
 
-
-
     def get_dict(self):
+        """resp dict"""
         return {
             "id": self.id,
             "user_id": self.user_id,
@@ -23,3 +23,4 @@ class EventInfo(sqlobject.SQLObject):
             "event_details": self.event_details,
             "created_on": self.created_on,
         }
+EventInfo.createTable(ifNotExists=True)
