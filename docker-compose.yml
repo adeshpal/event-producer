@@ -1,9 +1,0 @@
-version: '3'
-services: 
-  #build the dockerfile for the python image
-  web:
-    build: .
-    volumes:
-      - .:/code
-    ports:
-      - 8000:8000
