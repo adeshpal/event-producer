@@ -1,0 +1,3 @@
+[submodule "event-producer"]
+	path = event-producer
+	url = https://github.com/adeshpal/event-producer

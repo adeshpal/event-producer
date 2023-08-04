@@ -1,25 +1,23 @@
-#Handler file to route all the incoming request to service
-import falcon
-from src.producer import produce_event
-import logging
+"""Handler file to route all the incoming request to service"""
+import logging as log
 import json
+import falcon
+import src.params as param
+import  src.Handler.EventSrv as event
+from src.Handler.VersionHandler import ValidateParameter
 
-API_VERSIONS = ['v1']
-#ValidateParams
-class ValidateParameter:
-    def validate_version(self, req, resp, resource, params, API_VERSIONS):
-        if params.get('version') not in API_VERSIONS:
-            raise falcon.HTTPBadRequest(title='Invalid API Version',
-            description="Please Provide valid API version to access resources")
-
-# @falcon.before(ValidateParameter.validate_version, ['v1', 'v2'])
+@falcon.before(ValidateParameter.validate_version, param.API_VERSIONS)
 class ProducerHandler:
-    # def on_get(self, req, resp, version):
-    #     logging.warning("--------->>> request in get eventHandler: req= %s, resp= %s, -- version=:%s", req, resp, version)
-    #     produce_event()
-
-    def on_post(self, req, resp, version):
-        body = json.loads(req.stream.read())
-        logging.warning("--------->>> request in eventHandler: req= %s, resp= %s, -- version=:%s and data= %s",
-                        req, resp, version, body)
-        produce_event(body)
+    """Producer srv all exposed methods"""
+    def on_post(self,
+                req,
+                resp,
+                version):
+        """ publish event message to queue"""
+        try:
+            body = json.loads(req.stream.read())
+            log.warning("Request data to be process req= %s, resp= %s, version=:%s and data= %s",
+                            req, resp, version, body)
+        except ValueError as err:
+            log.error("Unable to load data, error=%s", err)
+        return event.publish_event(body, resp=resp)
