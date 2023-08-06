@@ -1,0 +1,66 @@
+//UserService events
+
+{
+    "user_id": 1,
+    "service_id" : 1, 
+    "service_name": "userSrv", 
+    "event_type" : "userCreate",
+    "event_details": {
+        "oldName":"",
+        "newName":"User 1"
+    }
+}
+
+{
+    "user_id": 2,
+    "service_id" : 1, 
+    "service_name": "userSrv", 
+    "event_type" : "userCreate",
+    "event_details": {
+        "oldName":"",
+        "newName":"User 2"
+    }
+}
+//DeviceService events
+{
+    "user_id": 3,
+    "service_id" : 2, 
+    "service_name": "deviceSrv", 
+    "event_type" : "deviceCreate",
+    "event_details": {
+        "oldName":"",
+        "newName":"iPhone"
+    }
+}
+
+{
+    "user_id": 4,
+    "service_id" : 2, 
+    "service_name": "deviceSrv", 
+    "event_type" : "deviceCreate",
+    "event_details": {
+        "oldName":"",
+        "newName":"Android"
+    }
+}
+//LicenseService events
+{
+    "user_id": 5,
+    "service_id" : 3, 
+    "service_name": "licSrv", 
+    "event_type" : "licCreate",
+    "event_details": {
+        "oldName":"M365 lic",
+        "newName":"M365"
+    }
+}
+{
+    "user_id": 6,
+    "service_id" : 3, 
+    "service_name": "licSrv", 
+    "event_type" : "licCreate",
+    "event_details": {
+        "oldName":"Google Lic",
+        "newName":"Google"
+    }
+}
