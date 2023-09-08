@@ -17,4 +17,4 @@ def publish_event(data, resp):
         response["status"] = param.FAILED
         response["message"] = "Something went wrong, event may not be processed"
     resp.media = response
-    resp.status = falcon.HTTP_202
+    resp.status = falcon.HTTP_201
